@@ -1,2 +1,2 @@
-PyAutoGUI==0.9.*
-pynput==1.8.*
+PyAutoGUI
+pynput
