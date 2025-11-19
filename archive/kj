@@ -1,4 +1,0 @@
-#!/bin/bash
-echo "Murdering mouse jiggler"
-proc_num=$(cut -d' ' -f1 <<<$(pgrep -lf python | grep mouse_jiggler.py))
-kill $(cut -d' ' -f1 <<<"$proc_num")
