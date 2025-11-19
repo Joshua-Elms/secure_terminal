@@ -9,7 +9,4 @@ for _ in range(shutdown_after_rounds):
     sleep(0.5)
 
 if lock_computer:
-    pg.hold("a")
-    pg.hold("command")
-    pg.hold("control")
-    pg.hold("q")
+    os.exec("pmset displaysleepnow")
