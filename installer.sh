@@ -8,6 +8,8 @@ source .venv/bin/activate
 pip install -r requirements.txt
 mkdir -p ~/bin
 python3 gen_ss_file.py
+touch ~/.bash_profile
+echo "export PATH=\"~/bin\":\$PATH" >> ~/.bash_profile
 cp ss ~/bin/ss
 chmod +x ~/bin/ss
 
