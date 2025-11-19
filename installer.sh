@@ -5,7 +5,7 @@
 
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+pip install -r requirements.txt --no-cache-dir
 mkdir -p ~/bin
 python3 gen_ss_file.py
 touch ~/.bash_profile
