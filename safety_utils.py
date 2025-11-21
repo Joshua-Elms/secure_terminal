@@ -1,30 +1,43 @@
 from pynput import keyboard, mouse
-from time import sleep
 import os
+from safety_config import (
+    use_alternate_shutdown_method,
+    mouse_move_message,
+    mouse_move_volume,
+    mouse_click_message,
+    mouse_click_volume,
+    shutdown_voice,
+    greeting_message,
+    greeting_volume,
+    greeting_voice
+)
 
 
-def yell(msg, vol=7):
+def yell(msg, vol, voice):
     os.system(
-        f"osascript -e 'set volume output volume {vol * 10}' && say {msg} -v 'Samantha'"
+        f"osascript -e 'set volume output volume {vol * 10}' && say {msg} -v '{voice}'"
     )
 
 
-def shutdown():
-    os.system("pmset displaysleepnow")
+def shutdown(use_alternate_shutdown_method=False):
+    cmd = "pmset displaysleepnow"
+    if use_alternate_shutdown_method:
+        cmd = "pmset sleepnow"
+    os.system(cmd)
 
 
 
 def mouse_tracker(shutdown_on_movement):
     def on_move(x, y):
         if shutdown_on_movement:
-            yell("Mouse moved. Initiating shutdown.")
+            yell(mouse_move_message, mouse_move_volume, shutdown_voice)
             shutdown()
             return False
         else:
             pass
 
     def on_click(x, y, button, pressed):
-        yell("Mouse clicked. Initiating shutdown.")
+        yell(mouse_click_message, mouse_click_volume, shutdown_voice)
         shutdown()
         return False
     
@@ -52,7 +65,7 @@ def keyboard_tracker(secret_code):
             if len(current_input) >= len(secret_code):
                 if current_input[-len(secret_code) :] == secret_code:
                     print("Secret code entered!")
-                    yell("Welcome, Josh.", vol=5)
+                    yell(greeting_message, greeting_volume, greeting_voice)
                     return False
         except AttributeError:
             pass
