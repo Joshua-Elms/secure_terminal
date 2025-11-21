@@ -1,4 +1,3 @@
-import pyautogui as pg
 from pynput import keyboard, mouse
 from time import sleep
 import os
@@ -14,17 +13,13 @@ def shutdown():
     os.system("pmset displaysleepnow")
 
 
-def get_pos():
-    return (pg.position().x, pg.position().y)
 
-
-def mouse_tracker(initial, shutdown_on_movement, movement_threshold=10):
+def mouse_tracker(shutdown_on_movement):
     def on_move(x, y):
         if shutdown_on_movement:
-            if (abs(x - initial[0]) + abs(y - initial[1])) > movement_threshold:
-                yell("Mouse moved. Initiating shutdown.")
-                shutdown()
-                return False
+            yell("Mouse moved. Initiating shutdown.")
+            shutdown()
+            return False
         else:
             pass
 

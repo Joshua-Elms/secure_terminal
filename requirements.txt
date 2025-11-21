@@ -1,2 +1,1 @@
-PyAutoGUI
-pynput==1.7.6
+pynput
