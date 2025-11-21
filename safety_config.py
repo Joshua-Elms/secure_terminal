@@ -1,12 +1,11 @@
 buffer_time = 5  # seconds
-secret_code = "squirrel"
 shutdown_on_movement = False
 terminate_on_shutdown = True
 mouse_move_message = "Mouse moved. Initiating shutdown."
 mouse_move_volume = 7
 mouse_click_message = "Mouse clicked. Initiating shutdown."
 mouse_click_volume = 7
-shutdown_voice = "Bad News"
+shutdown_voice = "Trinoids"
 greeting_message = "Welcome, Joshua"
 greeting_volume = 5
 greeting_voice = "Samantha"

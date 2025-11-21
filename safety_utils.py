@@ -19,7 +19,7 @@ def yell(msg, vol, voice):
     )
 
 
-def shutdown(use_alternate_shutdown_method=False):
+def shutdown():
     cmd = "pmset displaysleepnow"
     if use_alternate_shutdown_method:
         cmd = "pmset sleepnow"
